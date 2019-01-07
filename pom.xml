@@ -252,6 +252,32 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <artifactSet>
+                <excludes>
+                  <exclude>com.fasterxml.jackson.*:*</exclude>
+                  <exclude>junit:junit</exclude>
+                  <exclude>org.apache.spark:spark-core_2.11</exclude>
+                  <exclude>com.amazonaws:*</exclude>
+                  <exclude>org.scala-lang:*</exclude>
+                </excludes>
+              </artifactSet>
+            </configuration>
+          </execution>
+        </executions>
+        <configuration>
+          <finalName>uber-${artifactId}-${version}</finalName>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 
