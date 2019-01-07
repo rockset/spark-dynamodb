@@ -71,6 +71,7 @@ private[dynamodb] trait BaseScanner {
       .withReturnConsumedCapacity(ReturnConsumedCapacity.TOTAL)
       .withTotalSegments(config.totalSegments)
       .withSegment(config.segment)
+      .withConsistentRead(true)
 
     // Parse any projection expressions passed in
     val exprSpecBuilder = config.maybeRequiredColumns
